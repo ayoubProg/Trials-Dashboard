@@ -1,0 +1,44 @@
+<div class="container mt-4">
+
+  <header><h2>Trials Dashboard</h2></header>
+   <form (submit)="onsend()">
+     <div class="form-row">
+
+     <div class="col">
+       <input type="text" class="form-control" placeholder="Customer Name" [(ngModel)]="CustomersProduct.CustomerName" name="name" #userName="ngModel" required>   
+      <br>
+
+         <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <label class="input-group-text" for="inputGroupSelect01">Products</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" (change)="selectChanheHandler($event)">
+              <option selected >Choose...</option>
+               <option value="1">Hybrid</option>
+               <option value="2">DevOps</option>
+               <option value="3">Security And Risk</option>
+               <option value="4">Predictive Analytics</option>
+            </select> 
+     </div>
+
+           </div>
+               <button type="submit" class="btn btn-outline-primary">Add</button>
+      </div>
+   </form>
+</div>
+
+
+
+<div class="container mt-3" *ngFor="let CustomersProduct of CustomersProducts">  
+  <ul class="list-group">
+<li class="list-group-item">Customer Name: {{CustomersProduct.CustomerName}}</li>
+<li class="list-group-item">Product Name: {{CustomersProduct.ProductName}}</li>
+<li class="list-group-item">Start Date: {{CustomersProduct.StartDate | date:'yyyy-MM-dd '}}</li>
+<li class="list-group-item">End Date: {{CustomersProduct.EndDate | date:'yyyy-MM-dd '}}</li>
+<li class="list-group-item">Status: {{CustomersProduct.Status}}</li>
+
+<button class="btn btn-outline-warning btn-sm" (click)="onDelete(CustomersProduct.CustomerID,CustomersProduct.ProductID)">X</button> 
+
+</ul>
+</div>
+
